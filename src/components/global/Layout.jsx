@@ -4,11 +4,13 @@ import Footer from "./Footer"
 
 const Layout = () => {
   return (
-    <>
+    <div className="relative">
       <Navbar />
-      <Outlet />
+      <main className="min-h-screen">
+        <Outlet />
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }
 

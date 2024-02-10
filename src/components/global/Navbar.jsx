@@ -14,7 +14,6 @@ const Navbar = () => {
         </div>
 
         <div className="flex space-x-6">
-          {/* <button className="border rounded-3xl flex items-center p-1 gap-1 bg-grey hover:opacity-80"><HiOutlineUserCircle /> Account <FaAngleDown /></button> */}
           <Button 
             type={"button"}
             className={"border rounded-3xl flex items-center p-1 gap-1 bg-grey hover:opacity-80"}
