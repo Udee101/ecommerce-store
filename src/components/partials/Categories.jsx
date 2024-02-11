@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom"
-import SectionHeader from "../SectionHeader"
+import HomeSectionsContainer from "../container/HomeSectionsContainer"
 
 const CategoryCard = (props) => {
   const { img, category } = props.image
@@ -34,26 +33,17 @@ const Categories = () => {
 	]
 
   return (
-    <section className="space-y-8 py-8">
-      <SectionHeader
-        firtsText={'Products'}
-        secondText={'Categories'}
-        className={'text-center'}
-      />
-      
+    <HomeSectionsContainer
+      sectionTitle1={'Products'}
+      sectionTitle2={'Categories'}
+      pathName={'/'}
+    >
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {images.map((image, index) => (
           <CategoryCard image={image} key={index} />
         ))}
       </div>
-
-      <div className="text-center">
-        <Link 
-          to='/'
-          className='text-sm text-white bg-primary w-24 p-3 tracking-wide rounded-md transition-colors duration-300 hover:bg-primary-100 focus:outline-none focus:ring focus:ring-primary-100'
-        >shop all</Link>
-      </div>
-    </section>
+    </HomeSectionsContainer>
   )
 }
 

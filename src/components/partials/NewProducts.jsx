@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
-import SectionHeader from "../SectionHeader"
 import axios from "axios"
 import ProductCard from "../ProductCard"
-import { Link } from "react-router-dom"
+import HomeSectionsContainer from "../container/HomeSectionsContainer"
 
 const NewProducts = () => {
   const [products, setProducts] = useState([])
@@ -22,13 +21,11 @@ const NewProducts = () => {
 
 
   return (
-    <section className="space-y-8 my-8">
-      <SectionHeader
-        firtsText={'New'}
-        secondText={'Products'}
-        className={'text-center'}
-      />
-
+    <HomeSectionsContainer
+      sectionTitle1={'Products'}
+      sectionTitle2={'Categories'}
+      pathName={'/'}
+    >
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {products.map((product, index) => (
           <ProductCard 
@@ -38,14 +35,7 @@ const NewProducts = () => {
           />
         ))}
       </div>
-
-      <div className="text-center">
-        <Link 
-          to='/'
-          className='text-sm text-white bg-primary w-24 p-3 tracking-wide rounded-md transition-colors duration-300 hover:bg-primary-100 focus:outline-none focus:ring focus:ring-primary-100'
-        >shop all</Link>
-      </div>
-    </section>
+    </HomeSectionsContainer>
   )
 }
 
