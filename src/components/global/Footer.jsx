@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Button from "../Button"
 import InputField from "../InputField"
+import { logoTextLight } from "../../assets"
 
 
 const NewsLetterForm = () => {
@@ -19,13 +20,12 @@ const NewsLetterForm = () => {
 
   return (
     <form action="" className="space-y-4">
-      <h3 className="text-2xl font-bold">Sign up for our newsletter</h3>
-      <p className="text-sm">
-        Be the first to know about our special offers, news, and updates.
-      </p>
-      <div className="border border-black p-2 w-[85%] md:w-[80%]">
+      <h1 className="text-lg text-gray-200 font-semibold text-center lg:text-2xl">
+        Be the first to know about our special offers.
+      </h1>
+      <div className="flex flex-col justify-center mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
         <InputField
-          className={"w-[70%] focus:outline-none"}
+          className={"px-4 py-2 border rounded-md bg-gray-800 text-gray-300 border-gray-600 focus:outline-none"}
           type={"email"}
           placeholder={"Email Address"}
           value={email}
@@ -34,7 +34,7 @@ const NewsLetterForm = () => {
         <Button 
           label={"Sign Up"}
           type={"submit"}
-          className={"border-l border-black w-[30%] text-sm font-bold"} 
+          className={"w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80"} 
           handleOnClick={onSubmit}
         />
       </div>
@@ -44,39 +44,27 @@ const NewsLetterForm = () => {
 
 const Footer = () => {
   return (
-    <footer className="absolute bottom-0 w-full">
-      <div className="max-w-site mx-auto p-4">
-        <div
-          className="grid space-y-8 items-center border-t border-black pt-6 md:grid-cols-4 md:gap-x-8"
-        >
-          <div className="md:col-span-2">
-            <NewsLetterForm />
-          </div>
+    <footer className="flex justify-center px-4 text-gray-800 bg-gray-900">
+      <div className="w-full max-w-site mx-auto px-6 py-6">
+        
+        <NewsLetterForm />
 
-          <div>
-            <ul>
-              <li className="mb-2">
-                <Link
-                  className="text-sm text-gray-500 hover:text-black"
-                >Home</Link>
-              </li>
-            </ul>
-          </div>
+        <hr className="h-px bg-gray-200 border-none my-7 dark:bg-gray-700" />
 
-          <div>
-            <ul>
-              <li className="mb-2">
-                <Link
-                  className="text-sm text-gray-600 hover:text-black"
-                >About</Link>
-              </li>
-            </ul>
+        <div className="flex flex-col items-center justify-between md:flex-row">
+          <Link to="/">
+            <img className="w-auto h-5" src={logoTextLight} alt="light themed logo" />
+          </Link>
+
+          <div className="flex mt-4 md:m-0">
+            <div className="-mx-4">
+              <a href="#" className="px-4 text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 hover:underline">About</a>
+              <a href="#" className="px-4 text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 hover:underline">Blog</a>
+              <a href="#" className="px-4 text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 hover:underline">News</a>
+              <a href="#" className="px-4 text-sm text-gray-600 transition-colors duration-300 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 hover:underline">Contact</a>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="p-3 bg-black text-white text-sm text-center uppercase mt-12">
-        Copyrights VE-Store.com. All Rights Reserved
       </div>
     </footer>
   )
