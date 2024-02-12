@@ -22,8 +22,8 @@ const NewProducts = () => {
 
   return (
     <HomeSectionsContainer
-      sectionTitle1={'Products'}
-      sectionTitle2={'Categories'}
+      sectionTitle1={'New'}
+      sectionTitle2={'Products'}
       pathName={'/'}
     >
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">

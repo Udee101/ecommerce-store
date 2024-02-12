@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const HomeSectionsContainer = ({sectionTitle1, sectionTitle2, children, pathName}) => {
   return (
-    <section className="space-y-8 py-8">
+    <section className="space-y-8 py-16">
       <SectionHeader
         firtsText={sectionTitle1}
         secondText={sectionTitle2}

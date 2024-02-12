@@ -4,5 +4,7 @@ export const formatTitle = (string, length) => {
 };
 
 export const formatMoney = (price) => {
-  return `${String.fromCodePoint(0x00024) + price.toFixed(2)}`
+  let currentNairaValue = 1450.00
+  let priceInNaira = currentNairaValue * price
+  return `${String.fromCodePoint(0x20A6) + Intl.NumberFormat().format(priceInNaira)}`
 }
