@@ -24,7 +24,7 @@ const NewProducts = () => {
     <HomeSectionsContainer
       sectionTitle1={'New'}
       sectionTitle2={'Products'}
-      pathName={'/'}
+      pathName={'/products'}
     >
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {products.map((product, index) => (

@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom"
-import { formatMoney, formatTitle } from "../utils"
+import { formatMoney } from "../utils"
 import Badge from "./Badge"
 
 const ProductCard = ({isNewProduct, ...props}) => {
   const { id, image, category, price, title } = props.product
 
-  // const navigate = useNavigate()
   return (
     <Link to={`/products/${id}`} state={props.product} className="w-full h-[300px] space-y-2 group">
       <div className="relative w-full h-[70%] p-3 bg-grey rounded-md">
@@ -16,7 +15,7 @@ const ProductCard = ({isNewProduct, ...props}) => {
 
       <div className="">
         <p>{formatMoney(price)}</p>
-        <p>{ formatTitle(title, 16)}</p>
+        <p>{title.substring(0, 16)}...</p>
         <p className="capitalize text-xs text-gray-500">{category}</p>
       </div>
     </Link>

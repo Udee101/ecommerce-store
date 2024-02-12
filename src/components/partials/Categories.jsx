@@ -36,7 +36,7 @@ const Categories = () => {
     <HomeSectionsContainer
       sectionTitle1={'Products'}
       sectionTitle2={'Categories'}
-      pathName={'/'}
+      pathName={'/products'}
     >
       <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
         {images.map((image, index) => (
