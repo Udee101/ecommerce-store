@@ -1,24 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
-import axios from "axios"
 import ProductCard from "../ProductCard"
 import HomeSectionsContainer from "../container/HomeSectionsContainer"
+import { useLoaderData } from "react-router-dom"
 
 const NewProducts = () => {
+  const data = useLoaderData()
   const [products, setProducts] = useState([])
 
   useEffect(() => {
-    const fetchProducts = () => {
-      axios.get('https://fakestoreapi.com/products')
-      .then(res => {
-        const allProducts = res.data
-        const newProducts = allProducts.slice(0, 4)
-        setProducts(newProducts)
-      })
-    }
-    fetchProducts()
-  }, [])
-
+    const newProducts = data.slice(0, 4)
+    setProducts(newProducts)
+  }, [data])
 
   return (
     <HomeSectionsContainer

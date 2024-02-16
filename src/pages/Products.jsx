@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react"
 import ProductCard from "../components/ProductCard"
 import SectionHeader from "../components/SectionHeader"
-import axios from "axios"
+import { useLoaderData } from "react-router-dom"
 
 const Products = () => {
+  const data = useLoaderData()
   const [products, setProducts] = useState([])
 
-  useEffect(() => {
-    const fetchProducts = () => {
-      axios.get('https://fakestoreapi.com/products')
-      .then(res => {
-        setProducts(res.data)
-      })
-    }
-    fetchProducts()
-  }, [])
+  useEffect(() => { setProducts(data) }, [data])
 
   return (
     <section className="mt-24 p-4">
