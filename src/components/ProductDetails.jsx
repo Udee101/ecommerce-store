@@ -3,6 +3,10 @@ import Button from './Button'
 import { formatMoney } from '../utils'
 import Badge from './Badge'
 import { FaRegStarHalfStroke, FaStar } from 'react-icons/fa6'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../stores/cartSlice'
+import { ToastContainer } from 'react-toastify'
+import Quantity from './Quantity'
 
 const StarIcon = ({rate}) => {
   return rate > 2.5 ? 
@@ -11,7 +15,9 @@ const StarIcon = ({rate}) => {
 }
 
 const ProductDetails = ({details}) => {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
 
   const onIncrement = () => {
     return setQuantity(quantity => quantity + 1)
@@ -19,6 +25,20 @@ const ProductDetails = ({details}) => {
 
   const onDecrement = () => {
     return quantity === 0 ? setQuantity(0) : setQuantity(quantity => quantity - 1);
+  }
+
+  const addItemToCart = () => {
+    dispatch(
+      addToCart({
+        id: details.id,
+        title: details.title,
+        image: details.image,
+        price: details.price,
+        size: details.size,
+        quantity: quantity,
+        description: details.description
+      })
+    )
   }
 
   return (
@@ -39,25 +59,19 @@ const ProductDetails = ({details}) => {
         <p className="text-sm">{details.description}</p>
         <div className="flex items-center space-x-2">
           <p className="text-sm">Quantity: </p>
-          <div className="border space-x-2 p-1 rounded">
-            <Button 
-              label={'-'}
-              className={'border px-2 rounded'}
-              handleOnClick={onDecrement}
-            />
-            <span>{quantity}</span>
-            <Button 
-              label={'+'}
-              className={'border px-2 rounded'}
-              handleOnClick={onIncrement}
-            />
-          </div>
+          <Quantity
+            className={'border space-x-2 p-1 rounded'}
+            onIncrement={onIncrement}
+            onDecrement={onDecrement}
+            quantity={quantity}
+          />
         </div>
 
         <div className="grid gap-2 md:grid-cols-2">
           <Button
             label={'Add to cart'}
             className={'capitalize bg-primary text-white text-sm w-full p-3 rounded-md hover:bg-primary-100 duration-300'}
+            handleOnClick={addItemToCart}
           />
 
           <Button
@@ -66,6 +80,20 @@ const ProductDetails = ({details}) => {
           />
         </div>
       </div>
+
+      <ToastContainer
+        position="top-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+        transition: Bounce
+        />
     </>
   )
 }
