@@ -15,7 +15,7 @@ const HomeSectionsContainer = ({sectionTitle1, sectionTitle2, children, pathName
       <div className="text-center">
         <Link 
           to={pathName}
-          className='text-sm text-white bg-primary w-24 p-3 tracking-wide rounded-md transition-colors duration-300 hover:bg-primary-100 focus:outline-none focus:ring focus:ring-primary-100'
+          className='btn btn_primary w-24'
         >shop all</Link>
       </div>
     </section>

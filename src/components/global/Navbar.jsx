@@ -26,7 +26,6 @@ const Navbar = () => {
 
         <div className="flex space-x-6">
           <Button 
-            type={"button"}
             className={"border rounded-3xl flex items-center p-1 gap-1 bg-grey hover:opacity-80"}
           >
             <div className="flex items-center space-x-1">

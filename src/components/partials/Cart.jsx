@@ -52,11 +52,12 @@ const Cart = () => {
         </div>
         <div className="flex flex-row gap-2">
           <Button
+            disabled={items.length === 0}
             label={'empty cart'}
             handleOnClick={onRemoveAllItemsFromCart}
-            className={'capitalize bg-secondary text-white text-sm w-full p-3 rounded-md hover:bg-secondary-100  duration-300'}
+            className={`capitalize btn btn_secondary w-full ${items.length === 0 && 'disabled:opacity-45 cursor-not-allowed'}`}
           />
-          <Link className="capitalize text-white text-center bg-primary text-sm w-full p-3 rounded-md hover:bg-primary-100 duration-300">checkout</Link>
+          <Link className="btn btn_primary w-full">Checkout</Link>
         </div>
       </div>
     </aside>

@@ -70,13 +70,13 @@ const ProductDetails = ({details}) => {
         <div className="grid gap-2 md:grid-cols-2">
           <Button
             label={'Add to cart'}
-            className={'capitalize bg-primary text-white text-sm w-full p-3 rounded-md hover:bg-primary-100 duration-300'}
+            className={'capitalize btn btn_primary w-full'}
             handleOnClick={addItemToCart}
           />
 
           <Button
             label={'Buy now'}
-            className={'capitalize bg-white text-primary border-2 border-primary text-sm w-full p-3 rounded-md hover:bg-primary hover:text-white  duration-300'}
+            className={'capitalize btn btn_primary_inverted w-full'}
           />
         </div>
       </div>
