@@ -13,7 +13,7 @@ const Products = () => {
     <section className="mt-24 p-4">
       <div className="max-w-site mx-auto py-8">
         <SectionHeader 
-          firtsText={'all'}
+          firtsText={'all '}
           secondText={'products'}
           className={'mb-8'}
         />

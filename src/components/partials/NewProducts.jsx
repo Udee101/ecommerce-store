@@ -15,7 +15,7 @@ const NewProducts = () => {
 
   return (
     <HomeSectionsContainer
-      sectionTitle1={'New'}
+      sectionTitle1={'New '}
       sectionTitle2={'Products'}
       pathName={'/products'}
     >
