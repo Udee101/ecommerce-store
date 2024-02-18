@@ -4,34 +4,35 @@ import { toast } from "react-toastify";
 export const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    value: []
+    cartValue: [],
+    cartNavState: false
   },
   reducers: {
     addToCart: (state, action) => {
-      const itemIsInCart = state.value.find(item => action.payload.id === item.id)
+      const itemIsInCart = state.cartValue.find(item => action.payload.id === item.id)
 
       if(itemIsInCart) {
         toast.info('Item already exist')
       } else {
-        state.value.push(action.payload)
+        state.cartValue.push(action.payload)
         toast.success('successfully added item!')
       }
     },
 
     removeFromCart: (state, action) => {
-      state.value = state.value.filter(item => item.id != action.payload.id)
+      state.cartValue = state.cartValue.filter(item => item.id != action.payload.id)
 
       toast.info('Item removed successfully!')
     },
 
     emptyCart: (state) => {
-      state.value = []
+      state.cartValue = []
 
       toast.info('All items have been removed!')
     },
 
     incrementQuantity: (state, action) => {
-      const item = state.value.find(item => action.payload.id === item.id)
+      const item = state.cartValue.find(item => action.payload.id === item.id)
 
       if(item) {
         item.quantity++
@@ -39,13 +40,17 @@ export const cartSlice = createSlice({
     },
 
     decrementQuantity: (state, action) => {
-      const item = state.value.find(item => action.payload.id === item.id)
+      const item = state.cartValue.find(item => action.payload.id === item.id)
 
       item.quantity === 1 ? item.quantity = 1 : item.quantity--
-    }
+    },
+
+    toggleCartNaveState: (state) => {
+      state.cartNavState ? state.cartNavState = false : state.cartNavState = true
+    },
   }
 })
 
-export const { addToCart, removeFromCart, emptyCart, incrementQuantity, decrementQuantity } = cartSlice.actions
+export const { addToCart, removeFromCart, emptyCart, incrementQuantity, decrementQuantity, toggleCartNaveState } = cartSlice.actions
 
 export default cartSlice.reducer

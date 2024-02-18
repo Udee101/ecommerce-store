@@ -5,17 +5,17 @@ import { FaAngleDown } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
 import Button from "../Button";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Cart from "../partials/Cart";
 import { useState } from "react";
+import { toggleCartNaveState } from "../../stores/cartSlice";
 
 const Navbar = () => {
-  const itemCount = useSelector((state) => state.cart.value.length)
-  const [showCart, setShowCart] = useState(false)
+  const itemCount = useSelector((state) => state.cart.cartValue.length)
+  const showCart = useSelector((state) => state.cart.cartNavState)
 
-  const toggleCart = () => {
-    setShowCart(!showCart)
-  }
+  const dispatch = useDispatch()
+  const toggleCart = () => dispatch(toggleCartNaveState())
 
   return (
     <header className="w-full p-4 h-20 bg-white fixed top-0 z-[2] shadow-md">
