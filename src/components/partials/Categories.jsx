@@ -34,7 +34,7 @@ const Categories = () => {
 
   return (
     <HomeSectionsContainer
-      sectionTitle1={'Products'}
+      sectionTitle1={'Products '}
       sectionTitle2={'Categories'}
       pathName={'/products'}
     >

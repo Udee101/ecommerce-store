@@ -9,6 +9,7 @@ import Product from "./pages/Product";
 import Products from "./pages/Products";
 import { getAllProducts } from "./api/product";
 import NotFound from "./pages/NotFound";
+import Checkout from "./pages/Checkout";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ export const router = createBrowserRouter(
         <Route index element={<Home />} loader={getAllProducts} />
         <Route path="/products" element={<Products />} loader={getAllProducts} />
         <Route path="/products/:id" element={<Product />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Route>
     </>
   )

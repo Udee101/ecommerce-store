@@ -25,4 +25,11 @@
   .btn_secondary {
     @apply bg-secondary text-white hover:bg-secondary-100 focus:outline-[#f87575]
   }
+
+  .input {
+    @apply border border-gray-300 py-3 px-4 rounded-md focus:outline-blue-200 placeholder:text-sm w-full h-12
+  }
+  .select {
+    @apply appearance-none bg-white text-gray-400
+  }
 }

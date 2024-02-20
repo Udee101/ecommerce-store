@@ -5,28 +5,28 @@ import CartItem from "../CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { formatMoney } from "../../utils";
 import { useEffect, useState } from "react";
-import { emptyCart } from "../../stores/cartSlice";
+import { emptyCart, toggleCartNaveState } from "../../stores/cartSlice";
 
 const Cart = () => {
-  const items = useSelector((state) => state.cart.value);
+  const items = useSelector((state) => state.cart.cartValue);
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
-
-  const getTotal = () => {
+  
+  useEffect(() => {
     let price = 0;
     items.map((item) => (price += item.price * item.quantity))
     setTotal(price)
-  };
-  useEffect(() => {getTotal()}, [items]);
-
+  }, [items]);
+  
   const onRemoveAllItemsFromCart = () => dispatch(emptyCart())
+  const closeCart = () => dispatch(toggleCartNaveState())
 
   return (
     <aside className="absolute top-0 right-0 flex flex-col w-[85%] md:w-[45%] lg:w-[35%] duration-500 h-screen px-4 pt-8 pb-4 overflow-y-auto bg-white border-l ltr:border-r-0 rtl:border-l shadow-md">
       <div className="relative flex flex-col flex-auto">
         
         <SectionHeader 
-          firtsText={'your'}
+          firtsText={'your '}
           secondText={'cart'}
         />
 
@@ -45,21 +45,27 @@ const Cart = () => {
         }
       </div>
 
-      <div>
-        <div className="w-full flex justify-between mb-2">
-          <p className="text-gray-500">Subtotal: </p>
-          <p><strong>{formatMoney(total)}</strong></p>
+      { items.length > 0 && 
+        <div>
+          <div className="w-full flex justify-between mb-2">
+            <p className="text-gray-500">Subtotal: </p>
+            <p><strong>{formatMoney(total)}</strong></p>
+          </div>
+          <div className="flex flex-row gap-2">
+            <Button
+              disabled={items.length === 0}
+              label={'empty cart'}
+              handleOnClick={onRemoveAllItemsFromCart}
+              className={"capitalize btn btn_secondary w-full"}
+            />
+            <Link 
+              to='/checkout' 
+              className="btn btn_primary w-full"
+              onClick={closeCart}
+            >Checkout</Link>
+          </div>
         </div>
-        <div className="flex flex-row gap-2">
-          <Button
-            disabled={items.length === 0}
-            label={'empty cart'}
-            handleOnClick={onRemoveAllItemsFromCart}
-            className={`capitalize btn btn_secondary w-full ${items.length === 0 && 'disabled:opacity-45 cursor-not-allowed'}`}
-          />
-          <Link className="btn btn_primary w-full">Checkout</Link>
-        </div>
-      </div>
+      }
     </aside>
   )
 }
