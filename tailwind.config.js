@@ -15,7 +15,7 @@ export default {
         'grey-100': '#F3F3F3C0'
       },
       maxWidth: {
-        'site': '1280px'
+        'site': '1440px'
       }
     },
   },

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import ProductCard from "../components/ProductCard"
-import SectionHeader from "../components/SectionHeader"
+import ProductCard from "../components/ProductCard/ProductCard"
+import SectionHeader from "../components/shared/SectionHeader"
 import { useLoaderData } from "react-router-dom"
 
 const Products = () => {

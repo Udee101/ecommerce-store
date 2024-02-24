@@ -1,4 +1,4 @@
-import { img1, img2, img4 } from "../assets"
+import { img1, img2, img4 } from "../../assets"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'

@@ -1,9 +1,9 @@
 import { FaRegTrashAlt } from "react-icons/fa";
-import Button from "./Button"
-import Quantity from "./Quantity";
+import Button from "../shared/Button"
+import Quantity from "../shared/Quantity";
 import { useDispatch } from "react-redux";
-import { decrementQuantity, incrementQuantity, removeFromCart } from "../stores/cartSlice";
-import { formatMoney } from "../utils";
+import { decrementQuantity, incrementQuantity, removeFromCart } from "../../stores/cartSlice";
+import { formatMoney } from "../../utils";
 
 const CartItem = ({item}) => {
   const dispatch = useDispatch()

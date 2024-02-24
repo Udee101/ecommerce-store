@@ -1,4 +1,4 @@
-import SectionHeader from "../SectionHeader"
+import SectionHeader from "../shared/SectionHeader"
 import { Link } from "react-router-dom"
 
 const HomeSectionsContainer = ({sectionTitle1, sectionTitle2, children, pathName}) => {

@@ -1,9 +1,9 @@
 import { FaAngleDown } from "react-icons/fa6"
 
-const FormInput = ({ type, placeholder, errors, touched, ...props}) => {
+const FormInput = ({ type, placeholder, errors, touched, inputClass, containerClass, ...props}) => {
   return (
 
-    <div className="grid">
+    <div className={containerClass}>
       { props.isselectfield === 'true' ?
         <>
           <select
@@ -14,14 +14,14 @@ const FormInput = ({ type, placeholder, errors, touched, ...props}) => {
             <option value="card">Card</option>
             <option value="bank transfer">Bank Transfer</option>
           </select>
-          <div className="absolute top-[33%] right-4 text-gray-400">
+          <div className="absolute top-[18px] right-4 text-gray-400">
             <FaAngleDown />
           </div>
         </>
         :
         <input 
           type={type} 
-          className="input text-gray-600"
+          className={inputClass}
           placeholder={placeholder}
           {...props}
         />

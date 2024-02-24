@@ -18,7 +18,7 @@ export const formatMoney = (price) => {
   return `${String.fromCodePoint(0x20A6) + Intl.NumberFormat().format(priceInNaira)}`
 };
 
-export const checkoutFormSchema =Yup.object().shape({
+export const checkoutFormSchema = Yup.object().shape({
   first_name: Yup.string().required('First name is required'),
   last_name: Yup.string().required('Last name is required'),
   phone: Yup.string().required('Phone number is required'),

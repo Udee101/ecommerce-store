@@ -1,5 +1,6 @@
-import SectionHeader from "../components/SectionHeader"
-import CheckoutForm from "../components/checkout/CheckoutForm"
+import SectionHeader from "../components/shared/SectionHeader"
+import CheckoutForm from "../components/Checkout/CheckoutForm"
+import { checkout } from "../assets"
 
 const Checkout = () => {
   return (
@@ -14,7 +15,12 @@ const Checkout = () => {
           <strong>Kindly fill out the form to proceed with your order</strong>
         </p>
 
-        <CheckoutForm />
+        <div className="lg:grid lg:grid-cols-3 lg:items-center">
+          <div className="lg:col-span-2">
+            <CheckoutForm />
+          </div>
+          <img src={checkout} alt="" className="hidden lg:block " />
+        </div>
       </div>
     </section>
   )

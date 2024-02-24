@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import Button from './Button'
-import { formatMoney } from '../utils'
-import Badge from './Badge'
+import Button from '../shared/Button'
+import { formatMoney } from '../../utils'
+import Badge from '../shared/Badge'
 import { FaRegStarHalfStroke, FaStar } from 'react-icons/fa6'
 import { useDispatch } from 'react-redux'
-import { addToCart } from '../stores/cartSlice'
+import { addToCart } from '../../stores/cartSlice'
 import { ToastContainer } from 'react-toastify'
-import Quantity from './Quantity'
+import Quantity from '../shared/Quantity'
 
 const StarIcon = ({rate}) => {
   return rate > 2.5 ? 

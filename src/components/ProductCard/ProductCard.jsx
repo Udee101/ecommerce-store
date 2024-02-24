@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { formatMoney } from "../utils"
-import Badge from "./Badge"
+import { formatMoney } from "../../utils"
+import Badge from "../shared/Badge"
 
 const ProductCard = ({isNewProduct, ...props}) => {
   const { id, image, category, price, title } = props.product

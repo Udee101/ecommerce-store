@@ -3,11 +3,10 @@ import { logoText } from "../../assets"
 import { HiOutlineShoppingCart, HiOutlineUserCircle } from "react-icons/hi";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaTimes } from "react-icons/fa";
-import Button from "../Button";
+import Button from "../shared/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Cart from "../partials/Cart";
-import { useState } from "react";
+import Cart from "../Cart/Cart";
 import { toggleCartNaveState } from "../../stores/cartSlice";
 
 const Navbar = () => {

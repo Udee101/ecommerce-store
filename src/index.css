@@ -14,20 +14,22 @@
 
 @layer components {
   .btn {
-    @apply rounded-md duration-300 transition-colors text-sm text-center p-3 tracking-wide focus:outline
+    @apply rounded-md duration-300 transition-colors text-sm text-center p-3 tracking-wide focus:outline-none focus:ring 
   }
   .btn_primary {
-    @apply bg-primary text-white hover:bg-primary-100 focus:outline-[#8b8bf0]
+    @apply bg-primary text-white hover:bg-primary-100 focus:ring-[#8b8bf0]
   }
   .btn_primary_inverted {
     @apply bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white
   }
   .btn_secondary {
-    @apply bg-secondary text-white hover:bg-secondary-100 focus:outline-[#f87575]
+    @apply bg-secondary text-white hover:bg-secondary-100 focus:ring-[#f87575]
   }
-
+  .btn_gray {
+    @apply w-full text-white md:w-auto md:mx-4 bg-gray-800 hover:bg-gray-700 focus:ring-gray-300/80          
+  }
   .input {
-    @apply border border-gray-300 py-3 px-4 rounded-md focus:outline-blue-200 placeholder:text-sm w-full h-12
+    @apply border border-gray-300 py-3 px-4 rounded-md focus:outline-none focus:ring focus:ring-blue-200 placeholder:text-sm w-full h-12
   }
   .select {
     @apply appearance-none bg-white text-gray-400

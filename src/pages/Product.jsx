@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom"
-import SectionHeader from "../components/SectionHeader"
-import ProductDetails from "../components/ProductDetails";
+import SectionHeader from "../components/shared/SectionHeader"
+import ProductDetails from "../components/partials/ProductDetails";
 
 
 const Product = () => {

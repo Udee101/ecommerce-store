@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Button from "../Button";
-import SectionHeader from "../SectionHeader";
-import CartItem from "../CartItem";
+import Button from "../shared/Button";
+import SectionHeader from "../shared/SectionHeader";
+import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { formatMoney } from "../../utils";
 import { useEffect, useState } from "react";

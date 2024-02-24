@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react"
-import ProductCard from "../ProductCard"
+import ProductCard from "../ProductCard/ProductCard"
 import HomeSectionsContainer from "../container/HomeSectionsContainer"
 import { useLoaderData } from "react-router-dom"
 
