@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import userReducer from "./userSlice";
 
 const persistConfig = {
   key: 'root',
@@ -18,10 +19,14 @@ const persistConfig = {
   storage,
 }
 
-const persistedReducer = persistReducer(persistConfig, cartReducer)
+const cartPersistedReducer = persistReducer(persistConfig, cartReducer)
+const userPersistedReducer = persistReducer(persistConfig, userReducer)
 
 export const store = configureStore({
-  reducer: { cart: persistedReducer },
+  reducer: { 
+    cart: cartPersistedReducer,
+    user: userPersistedReducer
+  },
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
     serializableCheck: {

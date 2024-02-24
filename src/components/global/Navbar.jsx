@@ -8,13 +8,42 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Cart from "../Cart/Cart";
 import { toggleCartNaveState } from "../../stores/cartSlice";
+import { addUser } from "../../stores/userSlice"; 
+import DropDown from "../partials/DropDown";
+import { useState } from "react";
+import AuthPopUp from "../partials/AuthPopUp";
+import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "firebase/auth";
 
 const Navbar = () => {
+  const [showDropdown, setShowDropdown] = useState(false)
+
   const itemCount = useSelector((state) => state.cart.cartValue.length)
   const showCart = useSelector((state) => state.cart.cartNavState)
+  const userInfo = useSelector((state) => state.user.userInfo)
 
   const dispatch = useDispatch()
   const toggleCart = () => dispatch(toggleCartNaveState())
+  const saveUserDetails = (payload) => dispatch(addUser(payload))
+
+  const firstName = userInfo?.full_name?.split(" ")[0] 
+
+  const login = () => {
+    const provider = new GoogleAuthProvider()
+    const auth = getAuth()
+    signInWithPopup(auth, provider)
+      .then((res) => {
+        const user = res.user
+        const userData = {
+          id: user.uid,
+          full_name: user.displayName,
+          email: user.email,
+          profile_img: user.photoURL
+        }
+        setShowDropdown(false)
+        saveUserDetails(userData)
+      })
+      .catch((error) => console.error(error))
+  }
 
   return (
     <header className="w-full p-4 h-20 bg-white fixed top-0 z-[2] shadow-md">
@@ -23,16 +52,30 @@ const Navbar = () => {
           <img src={logoText} alt="logo image" className="w-32" />
         </Link>
 
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 relative">
           <Button 
-            className={"border rounded-3xl flex items-center p-1 gap-1 bg-grey hover:opacity-80"}
+            className={"border btn rounded-3xl flex items-center px-2 py-1 gap-1 bg-grey hover:opacity-80"}
+            handleOnClick={() => setShowDropdown(!showDropdown)}
           >
             <div className="flex items-center space-x-1">
-              <HiOutlineUserCircle className="w-6 h-6" /> 
-              <p>Account</p> 
+              <>
+                {
+                  userInfo.profile_img ? 
+                  <img src={userInfo.profile_img} alt="profile image" className="w-6 h-6 rounded-full" />
+                  :
+                  <HiOutlineUserCircle className="w-6 h-6" /> 
+                }
+              </>
+              <p>{ userInfo.length !== 0 ? firstName : 'Account'}</p> 
               <FaAngleDown />
             </div>
           </Button>
+
+          {/* dropdown menu */}
+          <div className={`absolute top-10 right-5 duration-300 ease-in-out ${showDropdown ? 'translate-y-1 opacity-100' : 'translate-y-0 opacity-0'}`}>
+            <DropDown onClick={login} />
+          </div>
+
           <Button
             className={"relative cursor-pointer hover:opacity-75 duration-200"}
             handleOnClick={toggleCart}
@@ -42,6 +85,8 @@ const Navbar = () => {
           </Button>
         </div>
       </nav>
+
+      {/* <AuthPopUp /> */}
 
       {/* Cart side bar component */}
       <div className={`absolute top-0 right-0 w-full flex flex-col ${showCart ? 'translate-x-0' : 'translate-x-full'} h-screen px-4 py-8 overflow-y-auto bg-gray-600/50 ease-in-out duration-300`}>
